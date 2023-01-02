@@ -69,8 +69,8 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         uses: ./.github/actions/build-s3-javascript
         with:
-          bucket-name: testing-github-actions-01
+          bucket-name: testing-github-actions-02
           artifacts-folder: ./dist
       - name: Output information
-        run: Website URL is ${{ steps.deploy-website.outputs.website-url }}
+        run: echo " Website URL is ${{ steps.deploy-website.outputs.website-url }} "
 
