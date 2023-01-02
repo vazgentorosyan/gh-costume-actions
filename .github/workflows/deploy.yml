@@ -11,6 +11,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Load & cache dependencies
         uses: ./.github/actions/caches-deps
+        with:
+          enable-cache: 'false'
       - name: Lint code
         run: npm run lint
   test:
