@@ -63,6 +63,7 @@ jobs:
       - name: Output contents
         run: ls
       - name: Deploy site
+        id: deploy-website
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -70,4 +71,6 @@ jobs:
         with:
           bucket-name: testing-github-actions-01
           artifacts-folder: ./dist
+      - name: Output information
+        run: Website URL is ${{ steps.deploy-website.outputs.website-url }}
 

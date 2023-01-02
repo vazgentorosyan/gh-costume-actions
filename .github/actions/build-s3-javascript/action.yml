@@ -11,6 +11,9 @@ inputs:
   artifacts-folder:
     description: 'artifact folder name that should be uploaded'
     required: true
+outputs:
+  website-url:
+    description: 'The URL after deploying website'
 runs:
   using: node16
   main: main.js
