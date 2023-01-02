@@ -5,6 +5,10 @@ inputs:
     description: 'Controls cache enable behavior'
     required: false
     default: 'true'
+outputs:
+  enable-cache:
+    description: 'Show controls cache enable behavior'
+    value: ${{ steps.install.outputs.enable-cache }}
 runs:
   using: 'composite'
   steps:
@@ -16,6 +20,9 @@ runs:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
+      id: install
       if: steps.cache.outputs.cache-hit != 'true' || inputs.enable-cache != 'true'
-      run: npm ci
+      run: |
+       npm ci
+       echo "enable-cache=${{ inputs.enable-cache }}" >> $GITHUB_OUTPUT
       shell: bash

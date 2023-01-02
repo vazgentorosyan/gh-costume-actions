@@ -11,8 +11,11 @@ jobs:
         uses: actions/checkout@v3
       - name: Load & cache dependencies
         uses: ./.github/actions/caches-deps
+        id: load-and-cache
         with:
           enable-cache: 'false'
+      - name: output cache information
+        run: echo "cache enabled? = ${{ steps.load-and-cache.outputs.enable-cache }}"
       - name: Lint code
         run: npm run lint
   test:
